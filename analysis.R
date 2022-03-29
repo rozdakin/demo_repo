@@ -8,3 +8,19 @@ head(data)
 data <- data %>% select(Age, Sex, YEAR, MONTH, DAY, Latitude, `Dosing body weight`, `DEE (MJ/day)`)
 
 summary(data)
+
+data <- mutate(data, Latitude = as.numeric(Latitude))
+
+
+# Let's make a plot
+
+myplot <- data %>%  filter(!is.na(Latitude)) %>% 
+  ggplot() + 
+  geom_point(aes(y = `DEE (MJ/day)`, x = Latitude, group = Sex, color = Sex)) + 
+  geom_smooth(aes(y = `DEE (MJ/day)`, x = Latitude, group = Sex, color = Sex), method = 'lm')
+
+ggsave('latitude.pdf', myplot, width = 6, height = 6)
+
+
+
+
