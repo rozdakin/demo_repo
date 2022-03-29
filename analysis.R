@@ -21,6 +21,7 @@ myplot <- data %>%  filter(!is.na(Latitude)) %>%
 
 ggsave('latitude.pdf', myplot, width = 6, height = 6)
 
-
+# add some new stuff
+65* 2
 
 
